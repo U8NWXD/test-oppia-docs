@@ -6,4 +6,4 @@
 * Add that token to the source code repository as a secret named
   `WIKI_ACCESS_TOKEN`.
 
-Test
+Test2
