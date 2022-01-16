@@ -13,8 +13,10 @@ jobs:
           token: ${{secrets.WIKI_ACCESS_TOKEN}}
       - name: Add remote
         run: git remote add deployment https://github.com/${{github.repository_owner}}/test-oppia.wiki.git
-      - name: Deploy
+      - name: Debugging
         run: |
           git fetch deployment
-          git checkout develop
+          git diff deployment/master
+      - name: Deploy
+        run: |
           git push deployment develop:master
