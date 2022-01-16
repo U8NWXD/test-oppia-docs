@@ -10,6 +10,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Add remote
-        run: git remote add deployment https://${{secrets.WIKI_ACCESS_TOKEN}}@github.com/${{github.repository_owner}}/test-oppia-docs develop:master
+        run: git remote add deployment https://${{secrets.WIKI_ACCESS_TOKEN}}@github.com/${{github.repository_owner}}/test-oppia-docs
       - name: Deploy
-        run: git push https://${{secrets.WIKI_ACCESS_TOKEN}}@github.com/${{github.repository_owner}}/test-oppia.wiki.git develop:master
+        run: git push deployment develop:master
