@@ -1,0 +1,15 @@
+name: Deploy to Wiki
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  lint:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Add remote
+        run: git remote add deployment https://${{secrets.WIKI_ACCESS_TOKEN}}@github.com/${{github.repository_owner}}/test-oppia-docs develop:master
+      - name: Deploy
+        run: git push https://${{secrets.WIKI_ACCESS_TOKEN}}@github.com/${{github.repository_owner}}/test-oppia.wiki.git develop:master
