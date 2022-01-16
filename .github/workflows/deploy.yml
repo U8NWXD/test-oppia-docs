@@ -14,11 +14,6 @@ jobs:
           fetch-depth: 0
       - name: Add remote
         run: git remote add deployment https://github.com/${{github.repository_owner}}/test-oppia.wiki.git
-      - name: Debugging
-        run: |
-          git fetch deployment
-          git diff deployment/master
-          git log
       - name: Deploy
         run: |
           git push deployment develop:master
