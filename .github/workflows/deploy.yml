@@ -17,6 +17,7 @@ jobs:
         run: |
           git fetch deployment
           git diff deployment/master
+          git log
       - name: Deploy
         run: |
           git push deployment develop:master
