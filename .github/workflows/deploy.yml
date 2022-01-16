@@ -12,4 +12,4 @@ jobs:
       - name: Add remote
         run: git remote add deployment https://${{secrets.WIKI_ACCESS_TOKEN}}@github.com/${{github.repository_owner}}/test-oppia.wiki.git
       - name: Deploy
-        run: git push https://${{secrets.WIKI_ACCESS_TOKEN}}@github.com/${{github.repository_owner}}/test-oppia.wiki.git develop:master
+        run: git push https://github.com/${{github.repository_owner}}/test-oppia.wiki.git develop:master
