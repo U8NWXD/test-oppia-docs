@@ -8,9 +8,15 @@ jobs:
   deploy:
     runs-on: ubuntu-18.04
     steps:
+      - name: Retrieve authentication token
+        id: get-token
+        uses: getsentry/action-github-app-token@v1
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.APP_PRIVATE_KEY }}
       - uses: actions/checkout@v2
         with:
-          token: ${{secrets.WIKI_ACCESS_TOKEN}}
+          token: ${{ steps.get-token.outputs.token }}
           fetch-depth: 0
       - name: Add remote
         run: git remote add deployment https://github.com/${{github.repository_owner}}/test-oppia.wiki.git
