@@ -1,7 +1,5 @@
 # Setup Instructions
 
-test change through web interface
-
 ## Setup Permissions
 
 * Create a GitHub App with `Read & write` access to the `Contents`
