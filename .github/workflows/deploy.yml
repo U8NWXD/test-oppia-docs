@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          token: ${{secrets.WIKI_ACCESS_TOKEN}}
+          token: ${{secrets.GITHUB_TOKEN}}
           fetch-depth: 0
       - name: Add remote
         run: git remote add deployment https://github.com/${{github.repository_owner}}/test-oppia.wiki.git
