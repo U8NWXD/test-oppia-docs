@@ -1,6 +1,6 @@
 # Setup Instructions
 
-change to revert
+change to revert!
 
 ## Setup Permissions
 
