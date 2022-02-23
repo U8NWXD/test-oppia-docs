@@ -1,6 +1,6 @@
-# Setup Instructions
+## Setup Instructions
 
-## Setup Permissions
+### Setup Permissions
 
 * Create a GitHub App with `Read & write` access to the `Contents`
   permission.
@@ -21,7 +21,7 @@
   to a new repository secret in the future, you can just generate a new
   key.
 
-## Customize Script
+### Customize Script
 
 Before using the scripts in this repository, you will need to replace:
 
@@ -33,7 +33,7 @@ Before using the scripts in this repository, you will need to replace:
 * `test-oppia-docs` with the source repository.
 * `U8NWXD` with your organization name.
 
-## Add the Scripts
+### Add the Scripts
 
 * Make sure both the source and deployment repositories exist. This
   means that the repository whose wiki you will be using as the
@@ -41,3 +41,12 @@ Before using the scripts in this repository, you will need to replace:
   repository exists.
 * Add the revert workflow to the deployment repository.
 * Add the deployment workflow to the source repository.
+
+## Security Analysis
+
+This approach introduces the following security concerns:
+
+* The permissions for the documentation source repository must be
+  maintained as they no longer automatically follow the deployment
+  repository permissions.
+* Access to the GitHub App must be secured
