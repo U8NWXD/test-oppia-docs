@@ -1,5 +1,7 @@
 # Setup Instructions
 
+change to revert
+
 ## Setup Permissions
 
 * Create a GitHub App with `Read & write` access to the `Contents`
