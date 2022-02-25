@@ -3,7 +3,8 @@
 ### Setup Permissions
 
 * Create a GitHub App with `Read & write` access to the `Contents`
-  permission.
+  permission
+  ([docs](https://docs.github.com/en/developers/apps/building-github-apps/creating-a-github-app)).
 * Download the app's private key.
 
   * **WARNING**: Treat this private key like a password! Anyone in
@@ -49,4 +50,39 @@ This approach introduces the following security concerns:
 * The permissions for the documentation source repository must be
   maintained as they no longer automatically follow the deployment
   repository permissions.
-* Access to the GitHub App must be secured
+* Access to the GitHub App must be secured. In particular, the app
+  should be created at the organization level, and the minimum number of
+  people should be granted [app manager
+  permissions](https://docs.github.com/en/organizations/managing-peoples-access-to-your-organization-with-roles/roles-in-an-organization#github-app-managers). Organization owners automatically have access.
+* The GitHub App's credentials must also be secured. In particular,
+  there should be no copies of the private key outside of GitHub actions
+  secrets.
+
+Here are some alternative approaches:
+
+* Creating a new user account that we can give access to the necessary
+  repositories and who the scripts will act as.
+
+  * This means we have to keep track of securing another account and
+    that account's credentials. The GitHub App approach is better
+    because we can use existing GitHub accounts to manage the app, and
+    it's not possible to log in as the app.
+  * The app's actions are clearly marked as being by a bot, which is
+    better than a user account which will look like a human user.
+
+* Using a personal access token (PAT).
+
+  * The PAT grants broad access across all the repositories the user who
+    generated the PAT has privileges for. This introduces a risk that a
+    compromise of Oppia could grant an attacker access to other,
+    unaffiliated repositories. A GitHub App has more fine-grained
+    permissions that can be restricted to particular repositories.
+
+* Using the `GITHUB_TOKEN` generated automatically for actions
+  workflows.
+
+  * This token does not grant access to the wiki, so even if we
+    force-deployed from the source repository instead of creating a
+    revert commit, the workflow in the deployment repository that
+    detects an edit through the web interface would not have permission
+    to force-deploy the source documentation to the deployment wiki.
