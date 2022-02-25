@@ -14,6 +14,12 @@ jobs:
         with:
           app_id: ${{ secrets.APP_ID }}
           private_key: ${{ secrets.APP_PRIVATE_KEY }}
+      - name: Test token
+        run: |
+          echo $(curl \
+            -H "Accept: application/vnd.github.v3+json" \
+            -H "Authorization: Bearer ${{ steps.get-token.outputs.token }}" \
+            https://api.github.com/installation/repositories)
       - uses: actions/checkout@v2
         with:
           token: ${{ steps.get-token.outputs.token }}
