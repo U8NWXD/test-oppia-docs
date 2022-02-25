@@ -14,6 +14,9 @@ jobs:
         with:
           app_id: ${{ secrets.APP_ID }}
           private_key: ${{ secrets.APP_PRIVATE_KEY }}
+      - name: Check whether token retrieved
+        run: |
+          echo "${{ steps.get-token.outputs.token }}" | wc -w
       - name: Test token
         run: |
           echo $(curl \
