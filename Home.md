@@ -2,9 +2,25 @@
 
 ### Setup Permissions
 
-* Create a GitHub App with `Read & write` access to the `Contents`
-  permission
-  ([docs](https://docs.github.com/en/developers/apps/building-github-apps/creating-a-github-app)).
+* Create a GitHub App with the following settings
+  ([docs](https://docs.github.com/en/developers/apps/building-github-apps/creating-a-github-app)):
+
+  * `Name` and `Description` that describe the app's purpose.
+  * For `Homepage URL` you can just put the link to your documentation
+    source repository. This URL is required by GitHub, but we don't use
+    it for anything.
+  * Leave `Callback URL`, `Setup URL`, `Webhook URL`, and `Webhook secret` blank.
+  * We don't use user authorization tokens, so you can leave `Expire
+    user authorization tokens` checked and leave `Request user
+    authorization (OAuth) during installation` and `Enable Device Flow`
+    unchecked.
+  * We don't use webhooks, so leave the `Active` checkbox under
+    `Webhook` unchecked.
+  * Give `Read & write` access to the `Contents` permission.
+  * Don't subscribe to any events.
+  * Allow installation `Only on this account` since we don't expect this
+    app to be used outside of the organization.
+
 * Download the app's private key.
 
   * **WARNING**: Treat this private key like a password! Anyone in
